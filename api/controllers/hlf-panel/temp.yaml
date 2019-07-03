@@ -1,0 +1,61 @@
+name: "ngo"
+x-type: "hlfv1"
+description: "NGO Network"
+version: "1.0"
+
+channels:
+  pg-member2-channel:
+    orderers:
+      - orderer.com
+    peers:
+      peer1:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+  pg-member3-channel:
+    orderers:
+      - orderer.com
+    peers:
+      peer1:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+
+organizations:
+  Org1:
+    mspid: m-NMO7XWCQ7NGF7IM77P5KG37GJI
+    peers:
+      - peer1
+    certificateAuthorities:
+      - ca-org1
+
+orderers:
+  orderer.com:
+    url: grpcs://orderer.n-jimst4r5bzcspburcnr3fltgtu.managedblockchain.us-east-1.amazonaws.com:30001
+    grpcOptions:
+      ssl-target-name-override: orderer.n-jimst4r5bzcspburcnr3fltgtu.managedblockchain.us-east-1.amazonaws.com
+    tlsCACerts:
+      path: /home/ec2-user/managedblockchain-tls-chain.pem
+
+peers:
+  peer1:
+    url: grpcs://nd-ayzgigtdwfa2bdaukrn7q7ztve.m-nmo7xwcq7ngf7im77p5kg37gji.n-jimst4r5bzcspburcnr3fltgtu.managedblockchain.us-east-1.amazonaws.com:30003
+    eventUrl: grpcs://nd-ayzgigtdwfa2bdaukrn7q7ztve.m-nmo7xwcq7ngf7im77p5kg37gji.n-jimst4r5bzcspburcnr3fltgtu.managedblockchain.us-east-1.amazonaws.com:30004
+    grpcOptions:
+      ssl-target-name-override: nd-ayzgigtdwfa2bdaukrn7q7ztve.m-nmo7xwcq7ngf7im77p5kg37gji.n-jimst4r5bzcspburcnr3fltgtu.managedblockchain.us-east-1.amazonaws.com
+    tlsCACerts:
+      path: /home/ec2-user/managedblockchain-tls-chain.pem
+
+certificateAuthorities:
+  ca-org1:
+    url: https://ca.m-nmo7xwcq7ngf7im77p5kg37gji.n-jimst4r5bzcspburcnr3fltgtu.managedblockchain.us-east-1.amazonaws.com:30002
+    httpOptions:
+      verify: false
+    tlsCACerts:
+      path: /home/ec2-user/managedblockchain-tls-chain.pem
+    registrar:
+      - enrollId: admin
+        enrollSecret: Adminpwd1!
+    caName: m-NMO7XWCQ7NGF7IM77P5KG37GJI

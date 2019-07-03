@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 
+const hlfModule = require('./hlf-panel/registerUser.js');
 
 const User = require('../models/user');
 
@@ -14,12 +15,22 @@ exports.create_user = (req, res, next) => {
                     message: 'existing nickName'
                 })
             } else {
-                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                bcrypt.hash(req.body.password, 10, async (err, hash) => {
                     if (err) {
                         return res.status(500).json({
                             err
                         })
                     } else {
+
+                        try {
+                            await hlfModule.registerUser(req.body.nickName);
+                        } catch (err) {
+                            console.log(err);
+                            return res.status(500).json({
+                                err
+                            })
+                        }
+
                         const user = new User({
                             _id: new mongoose.Types.ObjectId(),
                             nickName: req.body.nickName,

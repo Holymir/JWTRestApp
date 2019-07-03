@@ -35,7 +35,6 @@ exports.create_order = (req, res, next) => {
                 error: err
             })
         });
-
 };
 
 exports.get_all_orders = (req, res, next) => {

@@ -1,0 +1,6 @@
+# Install
+docker exec peer0.org1.example.com peer chaincode install -n sampleCode -v 0.1 -p ../../sampleCode -l node
+
+# Instantiate
+docker exec peer0.org1.example.com peer chaincode instantiate --channelID mychannel -n sampleCode -v 0.1 -c '{"Args":["Init"]}'
+

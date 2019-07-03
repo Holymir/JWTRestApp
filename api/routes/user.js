@@ -8,7 +8,7 @@ router.post('/signup', UserController.create_user);
 
 router.post('/login', UserController.login_user);
 
-router.get('/allUsers', checkAuth, UserController.get_all_users);
+router.get('/allUsers', UserController.get_all_users);
 
 router.delete('/:userID', checkAuth, UserController.delete_user);
 
