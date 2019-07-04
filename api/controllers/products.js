@@ -22,6 +22,7 @@ exports.queryChaincode = async (req, res, next) => {
 
 exports.invokeChaincode = async (req, res, next) => {
     console.log(req.userData.nickName);
+
     try {
         const txn = await ChaincodeActions.invokeChaincode('createCar', req.userData.nickName);
         res.status(200).json({

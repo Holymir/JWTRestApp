@@ -7,5 +7,19 @@ docker exec peer0.org1.example.com peer chaincode instantiate --channelID mychan
 # Init FabCar
 docker exec peer0.org1.example.com peer chaincode invoke -C mychannel -n sampleCode -c '{"Args":["initLedger"]}'
 
+# Invoke chaincode
+docker exec peer0.org1.example.com peer chaincode invoke -C mychannel -n sampleCode -c '{"Args":["createCar", "CAR12", "Honda", "Accord", "Black", "Tom"]}'
+
 # Get Transaction
 docker exec peer0.org1.example.com peer channel fetch newest mychannel.block -c mychannel
+
+
+
+
+
+NOTES:
+
+    * Don't forget to put "channels" in connection.json
+    * connecting the gateway (gateway.connect) we should set as in the "Connection Options" "enabled" to false.
+    For more info => https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/connectionoptions.html
+    (other solutions might be hiding in "Service Discovery")
