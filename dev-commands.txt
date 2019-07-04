@@ -4,3 +4,8 @@ docker exec peer0.org1.example.com peer chaincode install -n sampleCode -v 0.1 -
 # Instantiate
 docker exec peer0.org1.example.com peer chaincode instantiate --channelID mychannel -n sampleCode -v 0.1 -c '{"Args":["Init"]}'
 
+# Init FabCar
+docker exec peer0.org1.example.com peer chaincode invoke -C mychannel -n sampleCode -c '{"Args":["initLedger"]}'
+
+# Get Transaction
+docker exec peer0.org1.example.com peer channel fetch newest mychannel.block -c mychannel

@@ -2,6 +2,17 @@ const mongoose = require('mongoose');
 
 const Product = require('../models/products');
 
+const Query = require('./hlf-panel/query.js');
+
+exports.queryAllCars = async (req, res, next) => {
+    console.log(req.userData.nickName);
+    const cars = await Query(req.userData.nickName);
+    res.status(200).json({
+        cars
+    })
+
+};
+
 exports.create_product = (req, res, next) => {
 
     const product = new Product({
