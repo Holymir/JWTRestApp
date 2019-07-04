@@ -2,14 +2,37 @@ const mongoose = require('mongoose');
 
 const Product = require('../models/products');
 
-const Query = require('./hlf-panel/query.js');
+const ChaincodeActions = require('./hlf-panel/chaincode-actions');
 
-exports.queryAllCars = async (req, res, next) => {
+exports.queryChaincode = async (req, res, next) => {
     console.log(req.userData.nickName);
-    const cars = await Query(req.userData.nickName);
-    res.status(200).json({
-        cars
-    })
+    try {
+        const cars = await ChaincodeActions.queryChaincode(req.userData.nickName);
+        res.status(200).json({
+            cars
+        })
+    } catch (err) {
+        res.status(500).json({
+            message: "Error invoking chaincode",
+            err
+        })
+    }
+
+};
+
+exports.invokeChaincode = async (req, res, next) => {
+    console.log(req.userData.nickName);
+    try {
+        const txn = await ChaincodeActions.invokeChaincode('createCar', req.userData.nickName);
+        res.status(200).json({
+            txn
+        })
+    } catch (err) {
+        res.status(500).json({
+            message: "Error invoking chaincode",
+            err
+        })
+    }
 
 };
 

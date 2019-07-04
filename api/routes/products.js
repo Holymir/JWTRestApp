@@ -4,7 +4,9 @@ const checkAuth = require('../middleware/check-auth');
 
 const ProductController = require('../controllers/products');
 
-router.get('/car', checkAuth, ProductController.queryAllCars);
+router.get('/car', checkAuth, ProductController.queryChaincode);
+
+router.post('/car', checkAuth, ProductController.invokeChaincode);
 
 router.post('/', checkAuth, ProductController.create_product);
 

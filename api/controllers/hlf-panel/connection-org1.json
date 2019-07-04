@@ -1,48 +1,48 @@
-{
-    "name": "first-network-org1",
-    "version": "1.0.0",
-    "client": {
-        "organization": "Org1",
-        "connection": {
-            "timeout": {
-                "peer": {
-                    "endorser": "300"
-                }
-            }
-        }
-    },
-    "organizations": {
-        "Org1": {
-            "mspid": "Org1MSP",
-            "peers": [
-                "peer0.org1.example.com"
-            ],
-            "certificateAuthorities": [
-                "ca.org1.example.com"
-            ]
-        }
-    },
-    "peers": {
-        "peer0.org1.example.com": {
-            "url": "grpc://192.168.1.194:7051",
-            "tlsCACerts": {
-                "path": "../../../basic-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem"
-            },
-            "grpcOptions": {
-                "ssl-target-name-override": "peer0.org1.example.com"
-            }
-        }
-    },
-    "certificateAuthorities": {
-        "ca.org1.example.com": {
-            "url": "https://localhost:7054",
-            "caName": "ca.example.com",
-            "tlsCACerts": {
-                    "path": "../../../basic-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem"
-            },
-            "httpOptions": {
-                "verify": false
-            }
-        }
-    }
-}
+//{
+//    "name": "first-network-org1",
+//    "version": "1.0.0",
+//    "client": {
+//        "organization": "Org1",
+//        "connection": {
+//            "timeout": {
+//                "peer": {
+//                    "endorser": "300"
+//                }
+//            }
+//        }
+//    },
+//    "organizations": {
+//        "Org1": {
+//            "mspid": "Org1MSP",
+//            "peers": [
+//                "peer0.org1.example.com"
+//            ],
+//            "certificateAuthorities": [
+//                "ca.org1.example.com"
+//            ]
+//        }
+//    },
+//    "peers": {
+//        "peer0.org1.example.com": {
+//            "url": "grpc://192.168.1.194:7051",
+//            "tlsCACerts": {
+//                "path": "../../../basic-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem"
+//            },
+//            "grpcOptions": {
+//                "ssl-target-name-override": "peer0.org1.example.com"
+//            }
+//        }
+//    },
+//    "certificateAuthorities": {
+//        "ca.org1.example.com": {
+//            "url": "https://localhost:7054",
+//            "caName": "ca.example.com",
+//            "tlsCACerts": {
+//                    "path": "../../../basic-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem"
+//            },
+//            "httpOptions": {
+//                "verify": false
+//            }
+//        }
+//    }
+//}
