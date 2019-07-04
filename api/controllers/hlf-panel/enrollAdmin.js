@@ -19,6 +19,7 @@ async function enrollAdmin() {
         // Create a new CA client for interacting with the CA.
         const caInfo = ccp.certificateAuthorities['ca.org1.example.com'];
         const caTLSCACertsPath = path.resolve(__dirname, '..', 'basic-network', caInfo.tlsCACerts.path);
+        console.log(caTLSCACertsPath);
         const caTLSCACerts = fs.readFileSync(caTLSCACertsPath);
         const ca = new FabricCAServices(caInfo.url, { trustedRoots: caTLSCACerts, verify: false }, caInfo.caName);
 
