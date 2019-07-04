@@ -9,16 +9,16 @@ const { FileSystemWallet, X509WalletMixin } = require('fabric-network');
 const fs = require('fs');
 const path = require('path');
 
-const ccpPath = path.resolve(__dirname, '..', '..', 'controllers/hlf-panel', 'connection-org1.json');
+const ccpPath = path.resolve(__dirname, '../../../basic-network/connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
 const ccp = JSON.parse(ccpJSON);
 
 async function enrollAdmin() {
     try {
-
         // Create a new CA client for interacting with the CA.
-        const caInfo = ccp.certificateAuthorities['ca.org1.example.com'];
-        const caTLSCACertsPath = path.resolve(__dirname, '..', 'basic-network', caInfo.tlsCACerts.path);
+        const caInfo = ccp.certificateAuthorities['ca.example.com'];
+
+        const caTLSCACertsPath = path.resolve(__dirname, '../../../basic-network', caInfo.tlsCACerts.path);
         console.log(caTLSCACertsPath);
         const caTLSCACerts = fs.readFileSync(caTLSCACertsPath);
         const ca = new FabricCAServices(caInfo.url, { trustedRoots: caTLSCACerts, verify: false }, caInfo.caName);

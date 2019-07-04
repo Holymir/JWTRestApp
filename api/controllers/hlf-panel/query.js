@@ -7,7 +7,7 @@
 const { FileSystemWallet, Gateway } = require('fabric-network');
 const path = require('path');
 
-const ccpPath = path.resolve(__dirname, '../hlf-panel/connection-org1.json');
+const ccpPath = path.resolve(__dirname, '../../../basic-network/connection.json');
 
 async function main() {
     try {
@@ -19,16 +19,16 @@ async function main() {
         console.log(`Wallet path: ${walletPath}`);
 
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists('Holy4');
+        const userExists = await wallet.exists('Holy8');
         if (!userExists) {
-            console.log('An identity for the user "Holy4" does not exist in the wallet');
+            console.log('An identity for the user "Holy8" does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
             return;
         }
 
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
-        await gateway.connect(ccpPath, { wallet, identity: 'Holy4', discovery: { enabled: true, asLocalhost: true } });
+        await gateway.connect(ccpPath, { wallet, identity: 'Holy8', discovery: { enabled: true, asLocalhost: true } });
         // console.log(gateway);
 
         // Get the network (channel) our contract is deployed to.
